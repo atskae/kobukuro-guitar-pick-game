@@ -38,6 +38,7 @@ randomSounds["kuroda"] = [
 // Document elements
 kobuchiImage = document.getElementById("kobuchi-img")
 kobuchiScore = document.getElementById("kobuchi-score");
+headerText = document.getElementById("header-text");
 
 function playRandom(person) {
   sounds = randomSounds[person];
@@ -48,12 +49,14 @@ function playRandom(person) {
 function displayHaveIt() {
   console.log("displayHaveIt()");    
   kobuchiImage.src = haveItImage;
+  headerText.innerHTML = "持ってる〜";
   kobuchiHasItSound.play();
 }
 
 function displayNotHaveIt(){
   console.log("displayNotHaveIt()");
   kobuchiImage.src = notHaveItImage;
+  headerText.innerHTML = "今は持ってな〜い";
   kobuchiNotHasItSound.play();
 }
 
@@ -72,6 +75,9 @@ function enableButtons() {
 function returnToQuestion() {
   // Change to main image
   kobuchiImage.src = questionImage;
+ 
+  // Reset question
+  headerText.innerHTML = "今どっちでしょうか？";
   
   // Ask question
   questionSound.play();
