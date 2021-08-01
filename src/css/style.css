@@ -17,6 +17,10 @@ body {
     height: auto;
 }
 
+.button:hover {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.10) 0 0);
+}
+
 .name-circle {
     font-weight: bold;
     width: 35px;

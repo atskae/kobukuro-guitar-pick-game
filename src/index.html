@@ -27,6 +27,51 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="icon" type="image/png" href="images/favicon.png">
 
+  <!-- Game logic
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <script>
+    console.log("笑");
+
+    // Images
+    let questionImage = "images/placeholder_question.png";
+    let haveItImage = "images/placeholder_have_it.png";
+    let notHaveItImage = "images/placeholder_not_have_it.png";
+  
+    function displayQuestion() {
+      document.getElementById("kobuchi-img").src = questionImage;
+    }
+
+    function displayHaveIt() {
+      console.log("displayHaveIt()");    
+      document.getElementById("kobuchi-img").src = haveItImage;
+    }
+
+    function displayNotHaveIt(){
+      console.log("displayNotHaveIt()");
+      document.getElementById("kobuchi-img").src = notHaveItImage;
+    }
+
+    function buttonAction(choice) {
+      console.log("choice=" + choice);
+      
+      // Disable buttons until animation and sound complete
+      document.getElementById("buttons").disabled = true;
+      
+      if (choice === "have_it") {
+        displayNotHaveIt();
+      }
+      else if(choice === "not_have_it") {
+        displayHaveIt();
+      }
+     
+      // "Go-back" to main page
+      setTimeout(displayQuestion, 3000);
+      
+      // Enable buttons again
+      document.getElementById("buttons").disabled = false;
+    }
+  </script>
+
 </head>
 <body>
 
@@ -38,16 +83,16 @@
 
     <!-- Main Screen -->
     <div class="container">
-      <img style="border:1px solid #c7c7c7; max-width:500px; height:auto; display:block; margin-left:auto; margin-right:auto;" src="images/placeholder.png">
+      <img id="kobuchi-img" style="border:1px solid #c7c7c7; max-width:500px; height:auto; display:block; margin-left:auto; margin-right:auto;" src="images/placeholder_question.png">
     </div>
   
     <!-- Options 笑 -->
-    <div class="container">
-      <button class="button" style="margin-right:1%; background-color: #90d145; border:2px solid #5a822b">持ってる</button>
-      <button class="button" style="background-color: #f0818d; border: 2px solid #822f40">持ってない</button>
+    <div class="container" id="buttons">
+      <button class="button" id="have_it" onclick="buttonAction(this.id)" style="margin-right:1%; background-color: #90d145; border:2px solid #5a822b">持ってる</button>
+      <button class="button" id="not_have_it" onclick="buttonAction(this.id)" style="background-color: #f0818d; border: 2px solid #822f40">持ってない</button>
     </div>
   
-    <hr style="margin-top: 3%; margin-bottom: 3%; max-width: 10%">
+    <hr style="background-color:#c7c7c7; margin-top: 3%; margin-bottom: 3%; max-width: 10%">
 
     <!-- Score -->
     <div class="container">
