@@ -32,6 +32,11 @@
 
   <!-- Primary Page Layout
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+  <div id="overlay">
+    <div id="overlay-text" onclick="removeOverlay()">遊ぼう！</div>
+  </div>
+
   <div style="width: 45%; height: auto; margin: 0 auto;">
 
     <h1 style="text-align:center">今どっちでしょうか？</h1>
@@ -65,13 +70,23 @@
     console.log("笑");
 
     // Images
-    let questionImage = "images/placeholder_question.png";
-    let haveItImage = "images/placeholder_have_it.png";
-    let notHaveItImage = "images/placeholder_not_have_it.png";
- 
+    var questionImage = "images/placeholder_question.png";
+    var haveItImage = "images/placeholder_have_it.png";
+    var notHaveItImage = "images/placeholder_not_have_it.png";
+
+    // Sound effects
+    // Hopefully I won't get in trouble for this...
+    var questionSound = new Audio('sounds/question.mp3');
+
     // Document elements
     kobuchiImage = document.getElementById("kobuchi-img")
     kobuchiScore = document.getElementById("kobuchi-score");
+
+    function removeOverlay() {
+      document.getElementById("overlay").style.display = "none";
+      // Play main page audio
+      questionSound.play();
+    }
 
     function displayHaveIt() {
       console.log("displayHaveIt()");    
@@ -103,6 +118,9 @@
       score = parseInt(kobuchiScore.innerHTML);
       kobuchiScore.innerHTML = score + 1;
 
+      // Ask question
+      questionSound.play();
+
       // Enable buttons again
       enableButtons();
     }
@@ -123,6 +141,14 @@
       // "Go-back" to main page
       setTimeout(returnToQuestion, 3000);
     }
+
+    function main() {
+      // Turn on overlay
+      document.getElementById("overlay").style.display = "block";
+    }
+
+    main();
+
   </script>
 </body>
 
