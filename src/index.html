@@ -42,7 +42,7 @@
     </div>
   
     <!-- Options 笑 -->
-    <div class="container" id="buttons">
+    <div class="container">
       <button class="button" id="have_it" onclick="buttonAction(this.id)" style="margin-right:1%; background-color: #90d145; border:2px solid #5a822b">持ってる</button>
       <button class="button" id="not_have_it" onclick="buttonAction(this.id)" style="background-color: #f0818d; border: 2px solid #822f40">持ってない</button>
     </div>
@@ -73,10 +73,6 @@
     kobuchiImage = document.getElementById("kobuchi-img")
     kobuchiScore = document.getElementById("kobuchi-score");
 
-    function displayQuestion() {
-      kobuchiImage.src = questionImage;
-    }
-
     function displayHaveIt() {
       console.log("displayHaveIt()");    
       kobuchiImage.src = haveItImage;
@@ -87,11 +83,35 @@
       kobuchiImage.src = notHaveItImage;
     }
 
+    function disableButtons() {
+      document.getElementById("have_it").setAttribute("disabled", true);
+      document.getElementById("not_have_it").setAttribute("disabled", true);
+      console.log("Buttons disabled.");
+    }
+
+    function enableButtons() {
+      document.getElementById("have_it").removeAttribute("disabled");
+      document.getElementById("not_have_it").removeAttribute("disabled");
+      console.log("Buttons enabled.");
+    }
+
+    function returnToQuestion() {
+      // Change to main image
+      kobuchiImage.src = questionImage;
+      
+      // "Update" the score 笑
+      score = parseInt(kobuchiScore.innerHTML);
+      kobuchiScore.innerHTML = score + 1;
+
+      // Enable buttons again
+      enableButtons();
+    }
+
     function buttonAction(choice) {
       console.log("choice=" + choice);
       
       // Disable buttons until animation and sound complete
-      document.getElementById("buttons").disabled = true;
+      disableButtons();
       
       if (choice === "have_it") {
         displayNotHaveIt();
@@ -101,14 +121,7 @@
       }
      
       // "Go-back" to main page
-      setTimeout(displayQuestion, 3000);
-     
-      // "Update" the score
-      score = parseInt(kobuchiScore.innerHTML);
-      kobuchiScore.innerHTML = score + 1;
-      
-      // Enable buttons again
-      document.getElementById("buttons").disabled = false;
+      setTimeout(returnToQuestion, 3000);
     }
   </script>
 </body>
