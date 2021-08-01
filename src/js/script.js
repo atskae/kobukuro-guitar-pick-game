@@ -1,20 +1,28 @@
 console.log("笑");
 
+/* Constants */
+
 // Images
-var questionImage = "images/placeholder_question.png";
-var haveItImage = "images/placeholder_have_it.png";
-var notHaveItImage = "images/placeholder_not_have_it.png";
+const questionImage = "images/placeholder_question.png";
+const haveItImage = "images/placeholder_have_it.png";
+const notHaveItImage = "images/placeholder_not_have_it.png";
 
 // Sound effects
 // Hopefully I won't get in trouble for this...
-var questionSound = new Audio("sounds/question.mp3");
-var kobuchiHasItSound = new Audio("sounds/kobuchi_has_it.mp3");
-var kobuchiNotHasItSound = new Audio("sounds/kobuchi_not_has_it.mp3");
-var haHaHaSound = new Audio("sounds/hahaha.mp3");
-var sugoiSound = new Audio("sounds/sugoi.mp3");
+const questionSound = new Audio("sounds/question.mp3");
+const kobuchiHasItSound = new Audio("sounds/kobuchi_has_it.mp3");
+const kobuchiNotHasItSound = new Audio("sounds/kobuchi_not_has_it.mp3");
+const haHaHaSound = new Audio("sounds/hahaha.mp3");
+const sugoiSound = new Audio("sounds/sugoi.mp3");
+
+// Document elements
+const kobuchiImage = document.getElementById("kobuchi-img")
+const kobuchiScore = document.getElementById("kobuchi-score");
+const headerText = document.getElementById("header-text");
 
 // Random sound effects
 randomSounds = {}
+
 randomSounds["kobuchi"] = [
   new Audio("sounds/kobuchi_hm.mp3"),
   new Audio("sounds/kobuchi_look.mp3"),
@@ -25,6 +33,7 @@ randomSounds["kobuchi"] = [
   new Audio("sounds/kobuchi_eyay.mp3"),
   new Audio("sounds/kobuchi_yare.mp3"),
 ];
+
 randomSounds["kuroda"] = [
   new Audio("sounds/kuroda_eejyanai.mp3"),
   new Audio("sounds/kuroda_surprise.mp3"),
@@ -35,10 +44,7 @@ randomSounds["kuroda"] = [
   new Audio("sounds/kuroda_dekita.mp3"),
 ];
 
-// Document elements
-kobuchiImage = document.getElementById("kobuchi-img")
-kobuchiScore = document.getElementById("kobuchi-score");
-headerText = document.getElementById("header-text");
+/* Logic */
 
 function playRandom(person) {
   sounds = randomSounds[person];
@@ -131,5 +137,7 @@ function main() {
   // Turn on overlay
   document.getElementById("overlay-first").style.display = "block";
 }
+
+/* Main entry point */
 
 main();
