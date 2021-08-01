@@ -1,6 +1,6 @@
 console.log("笑");
 
-/* Constants */
+/* Constant references */
 
 // Images
 const questionImage = "images/placeholder_question.png";
@@ -114,7 +114,7 @@ function buttonAction(choice) {
     displayHaveIt();
   }
 
-  // "Update" the score 笑
+  // "Update" the winner's score 笑
   score = parseInt(kobuchiScore.innerHTML);
   kobuchiScore.innerHTML = score + 1;
  
@@ -124,6 +124,7 @@ function main() {
   disableButtons();
   
   // Setup reaction sounds
+  // This ensures the second sound starts only when the first sound ends
   kobuchiNotHasItSound.addEventListener("ended", function() {
     haHaHaSound.addEventListener("ended", function() {addOverlayReplay();});
     haHaHaSound.play();
