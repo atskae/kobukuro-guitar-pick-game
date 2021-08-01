@@ -33,8 +33,12 @@
   <!-- Primary Page Layout
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 
-  <div id="overlay" onclick="removeOverlay()">
-    <div id="overlay-text">遊ぼう！</div>
+  <div class="overlay" id="overlay-first" onclick="removeOverlay(this.id)">
+    <div class="overlay-text">遊ぼう！</div>
+  </div>
+
+  <div class="overlay" id="overlay-replay" onclick="removeOverlay(this.id)">
+    <div class="overlay-text">もう一回？</div>
   </div>
 
   <div style="width: 45%; height: auto; margin: 0 auto;">
@@ -66,90 +70,7 @@
 
 <!-- Game logic
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <script>
-    console.log("笑");
-
-    // Images
-    var questionImage = "images/placeholder_question.png";
-    var haveItImage = "images/placeholder_have_it.png";
-    var notHaveItImage = "images/placeholder_not_have_it.png";
-
-    // Sound effects
-    // Hopefully I won't get in trouble for this...
-    var questionSound = new Audio('sounds/question.mp3');
-
-    // Document elements
-    kobuchiImage = document.getElementById("kobuchi-img")
-    kobuchiScore = document.getElementById("kobuchi-score");
-
-    function removeOverlay() {
-      document.getElementById("overlay").style.display = "none";
-      // Play main page audio
-      questionSound.play();
-    }
-
-    function displayHaveIt() {
-      console.log("displayHaveIt()");    
-      kobuchiImage.src = haveItImage;
-    }
-
-    function displayNotHaveIt(){
-      console.log("displayNotHaveIt()");
-      kobuchiImage.src = notHaveItImage;
-    }
-
-    function disableButtons() {
-      document.getElementById("have_it").setAttribute("disabled", true);
-      document.getElementById("not_have_it").setAttribute("disabled", true);
-      console.log("Buttons disabled.");
-    }
-
-    function enableButtons() {
-      document.getElementById("have_it").removeAttribute("disabled");
-      document.getElementById("not_have_it").removeAttribute("disabled");
-      console.log("Buttons enabled.");
-    }
-
-    function returnToQuestion() {
-      // Change to main image
-      kobuchiImage.src = questionImage;
-      
-      // "Update" the score 笑
-      score = parseInt(kobuchiScore.innerHTML);
-      kobuchiScore.innerHTML = score + 1;
-
-      // Ask question
-      questionSound.play();
-
-      // Enable buttons again
-      enableButtons();
-    }
-
-    function buttonAction(choice) {
-      console.log("choice=" + choice);
-      
-      // Disable buttons until animation and sound complete
-      disableButtons();
-      
-      if (choice === "have_it") {
-        displayNotHaveIt();
-      }
-      else if(choice === "not_have_it") {
-        displayHaveIt();
-      }
-     
-      // "Go-back" to main page
-      setTimeout(returnToQuestion, 3000);
-    }
-
-    function main() {
-      // Turn on overlay
-      document.getElementById("overlay").style.display = "block";
-    }
-
-    main();
-
-  </script>
+  <script type="text/javascript" src="js/script.js"></script>
 </body>
 
 </html>
