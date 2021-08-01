@@ -10,7 +10,8 @@ var notHaveItImage = "images/placeholder_not_have_it.png";
 var questionSound = new Audio("sounds/question.mp3");
 var kobuchiHasItSound = new Audio("sounds/kobuchi_has_it.mp3")
 var kobuchiNotHasItSound = new Audio("sounds/kobuchi_not_has_it.mp3")
-var hahaha = new Audio("sounds/hahaha.mp3");
+var haHaHaSound = new Audio("sounds/hahaha.mp3");
+var sugoiSound = new Audio("sounds/sugoi.mp3");
 
 // Document elements
 kobuchiImage = document.getElementById("kobuchi-img")
@@ -77,12 +78,22 @@ function buttonAction(choice) {
   score = parseInt(kobuchiScore.innerHTML);
   kobuchiScore.innerHTML = score + 1;
  
-  // Show replay message overlay in milliseconds
-  setTimeout(addOverlayReplay, 2000);
 }
 
 function main() {
   disableButtons();
+  
+  // Setup reaction sounds
+  kobuchiNotHasItSound.addEventListener("ended", function() {
+    haHaHaSound.addEventListener("ended", function() {addOverlayReplay();});
+    haHaHaSound.play();
+  });
+  
+  kobuchiHasItSound.addEventListener("ended", function() {
+    sugoiSound.addEventListener("ended", function() {addOverlayReplay();});
+    sugoiSound.play();
+  });
+  
   // Turn on overlay
   document.getElementById("overlay-first").style.display = "block";
 }
