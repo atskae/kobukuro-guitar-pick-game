@@ -27,51 +27,7 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="icon" type="image/png" href="images/favicon.png">
 
-  <!-- Game logic
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <script>
-    console.log("笑");
-
-    // Images
-    let questionImage = "images/placeholder_question.png";
-    let haveItImage = "images/placeholder_have_it.png";
-    let notHaveItImage = "images/placeholder_not_have_it.png";
   
-    function displayQuestion() {
-      document.getElementById("kobuchi-img").src = questionImage;
-    }
-
-    function displayHaveIt() {
-      console.log("displayHaveIt()");    
-      document.getElementById("kobuchi-img").src = haveItImage;
-    }
-
-    function displayNotHaveIt(){
-      console.log("displayNotHaveIt()");
-      document.getElementById("kobuchi-img").src = notHaveItImage;
-    }
-
-    function buttonAction(choice) {
-      console.log("choice=" + choice);
-      
-      // Disable buttons until animation and sound complete
-      document.getElementById("buttons").disabled = true;
-      
-      if (choice === "have_it") {
-        displayNotHaveIt();
-      }
-      else if(choice === "not_have_it") {
-        displayHaveIt();
-      }
-     
-      // "Go-back" to main page
-      setTimeout(displayQuestion, 3000);
-      
-      // Enable buttons again
-      document.getElementById("buttons").disabled = false;
-    }
-  </script>
-
 </head>
 <body>
 
@@ -97,11 +53,65 @@
     <!-- Score -->
     <div class="container">
       <div class="name-circle" style="background:white; color: black;">小</div> <span class="score" id="kobuchi-score" style="margin-right: 50%">0</span>
-      <div class="name-circle" style="background:black; color: white;">黒</div> <span class="score" id="kuroda-score">0</span>
+      <div class="name-circle" style="background:black; color: white;">黒</div> <span class="score">0</span>
     </div>
 
   </div> <!-- Main Container end -->
 <!-- End Document
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+<!-- Game logic
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <script>
+    console.log("笑");
+
+    // Images
+    let questionImage = "images/placeholder_question.png";
+    let haveItImage = "images/placeholder_have_it.png";
+    let notHaveItImage = "images/placeholder_not_have_it.png";
+ 
+    // Document elements
+    kobuchiImage = document.getElementById("kobuchi-img")
+    kobuchiScore = document.getElementById("kobuchi-score");
+
+    function displayQuestion() {
+      kobuchiImage.src = questionImage;
+    }
+
+    function displayHaveIt() {
+      console.log("displayHaveIt()");    
+      kobuchiImage.src = haveItImage;
+    }
+
+    function displayNotHaveIt(){
+      console.log("displayNotHaveIt()");
+      kobuchiImage.src = notHaveItImage;
+    }
+
+    function buttonAction(choice) {
+      console.log("choice=" + choice);
+      
+      // Disable buttons until animation and sound complete
+      document.getElementById("buttons").disabled = true;
+      
+      if (choice === "have_it") {
+        displayNotHaveIt();
+      }
+      else if(choice === "not_have_it") {
+        displayHaveIt();
+      }
+     
+      // "Go-back" to main page
+      setTimeout(displayQuestion, 3000);
+     
+      // "Update" the score
+      score = parseInt(kobuchiScore.innerHTML);
+      kobuchiScore.innerHTML = score + 1;
+      
+      // Enable buttons again
+      document.getElementById("buttons").disabled = false;
+    }
+  </script>
+
 </body>
 </html>
