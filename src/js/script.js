@@ -19,11 +19,20 @@ randomSounds["kobuchi"] = [
   new Audio("sounds/kobuchi_hm.mp3"),
   new Audio("sounds/kobuchi_look.mp3"),
   new Audio("sounds/kobuchi_sugoi.mp3"),
+  new Audio("sounds/kobuchi_nani.mp3"),
+  new Audio("sounds/kobuchi_pero.mp3"),
+  new Audio("sounds/kobuchi_hikeru.mp3"),
+  new Audio("sounds/kobuchi_eyay.mp3"),
+  new Audio("sounds/kobuchi_yare.mp3"),
 ];
 randomSounds["kuroda"] = [
   new Audio("sounds/kuroda_eejyanai.mp3"),
   new Audio("sounds/kuroda_surprise.mp3"),
   new Audio("sounds/kuroda_uruseh.mp3"),
+  new Audio("sounds/kuroda_anohi.mp3"),
+  new Audio("sounds/kuroda_nani.mp3"),
+  new Audio("sounds/kuroda_dochi.mp3"),
+  new Audio("sounds/kuroda_dekita.mp3"),
 ];
 
 // Document elements
