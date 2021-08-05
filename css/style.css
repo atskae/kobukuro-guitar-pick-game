@@ -25,25 +25,11 @@ body {
     position: absolute;
     top: 50%;
     left: 50%;
-    font-size: 50px;
+    font-size: 2rem;
     color: white;
+    text-align: center;
     transform: translate(-50%,-50%);
     -ms-transform: translate(-50%,-50%);
-}
-
-.container {
-    margin-top: 3%;
-    display: flex;
-    justify-content: center;
-}
-
-.button {
-    border-radius: 45px;
-    font-family: 'M PLUS Rounded 1c', sans-serif;
-    font-size: 1.15rem;
-    padding: 1%;
-    min-width: 200px;
-    height: auto;
 }
 
 #not_have_it:hover {
