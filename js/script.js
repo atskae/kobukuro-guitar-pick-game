@@ -6,6 +6,8 @@ console.log("笑");
 const questionImage = "images/placeholder_question.png";
 const haveItImage = "images/placeholder_have_it.png";
 const notHaveItImage = "images/placeholder_not_have_it.png";
+const haveItImageNext = "images/placeholder_have_it_next.png";
+const notHaveItImageNext = "images/placeholder_not_have_it_next.png";
 
 // Sound effects
 // Hopefully I won't get in trouble for this...
@@ -126,11 +128,13 @@ function main() {
   // Setup reaction sounds
   // This ensures the second sound starts only when the first sound ends
   kobuchiNotHasItSound.addEventListener("ended", function() {
+    kobuchiImage.src = notHaveItImageNext
     haHaHaSound.addEventListener("ended", function() {addOverlayReplay();});
     haHaHaSound.play();
   });
   
   kobuchiHasItSound.addEventListener("ended", function() {
+    kobuchiImage.src = haveItImageNext
     sugoiSound.addEventListener("ended", function() {addOverlayReplay();});
     sugoiSound.play();
   });
