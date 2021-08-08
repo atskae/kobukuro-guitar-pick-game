@@ -128,13 +128,15 @@ function main() {
   // Setup reaction sounds
   // This ensures the second sound starts only when the first sound ends
   kobuchiNotHasItSound.addEventListener("ended", function() {
-    kobuchiImage.src = notHaveItImageNext
+    kobuchiImage.src = notHaveItImageNext;
+    console.log("Changed image to notHaveItNext");
     haHaHaSound.addEventListener("ended", function() {addOverlayReplay();});
     haHaHaSound.play();
   });
   
   kobuchiHasItSound.addEventListener("ended", function() {
-    kobuchiImage.src = haveItImageNext
+    kobuchiImage.src = haveItImageNext;
+    console.log("Changed image to haveItNext");
     sugoiSound.addEventListener("ended", function() {addOverlayReplay();});
     sugoiSound.play();
   });
